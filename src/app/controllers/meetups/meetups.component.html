@@ -1,18 +1,3 @@
-<div>
-  <label>Meetup name:
-    <input #meetupName />
-  </label>
-  <label>Meetup city:
-    <input #meetupCity />
-  </label>
-  <label>Meetup address:
-    <input #meetupAddress />
-  </label>
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button (click)="add(meetupName.value); meetupName.value=''">
-    add
-  </button>
-</div>
 
 <div>
   <h1>Meetups</h1>
@@ -23,3 +8,46 @@
     </li>
   </ul>
 </div>
+
+<br />
+<br />
+<div>
+   <br />
+  <!-- <a [routerLink]="['/']" class="btn grey">Back</a> -->
+  <h1>Add Meetup</h1>
+  <!-- <form onSubmit={this.onSubmit.bind(this)}> -->
+     <div class="input-field">
+       <input #meetupName type="text" name="name" ref="name" />
+       <label for="name">Name</label>
+     </div>
+     <div class="input-field">
+       <input #meetupCity type="text" name="city" ref="city" />
+       <label for="city">City</label>
+     </div>
+     <div class="input-field">
+       <input #meetupAddress type="text" name="address" ref="address" />
+       <label for="address">Address</label>
+     </div>
+     <!-- <input type="submit" value="Save" class="btn" /> -->
+     <!-- (click) passes input value to add() and then clears the input -->
+     <button (click)="add(meetupName.value); meetupName.value=''" class="btn">
+       add
+     </button>
+   <!-- </form> -->
+ </div>
+
+<!-- <div>
+  <label>Meetup name:
+    <input #meetupName />
+  </label>
+  <label>Meetup city:
+    <input #meetupCity />
+  </label>
+  <label>Meetup address:
+    <input #meetupAddress />
+  </label> -->
+  <!-- (click) passes input value to add() and then clears the input -->
+  <!-- <button (click)="add(meetupName.value); meetupName.value=''">
+    add
+  </button>
+</div> -->
