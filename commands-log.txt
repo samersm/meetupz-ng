@@ -1,2 +1,7 @@
 $ ng new meetups --directory ./
 commit..
+
+$ ng generate component controllers/meetups
+$ ng generate module config/app-routing --flat --module=app
+$ ng g service services/data --module=app
+commit..
