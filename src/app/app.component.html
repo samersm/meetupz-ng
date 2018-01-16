@@ -1,2 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<router-outlet></router-outlet>
+<div>
+  <nav class="blue darken-3">
+    <div class="nav-wrapper">
+      <a [routerLink]="['/']" class="brand-logo center">Meetupz</a>
+      <a data-activates="main-menu" class="button-collapse show-on-large">
+        <i class="fa fa-bars"></i>
+        </a>
+      <ul class="right hide-on-small-only">
+        <li><a [routerLink]="['/']"><i class="fa fa-users"></i> Meetups</a></li>
+      </ul>
+      <ul class="side-nav" id="main-menu">
+      <li><a [routerLink]="['/']"><i class="fa fa-users"></i> Meetups</a></li>
+      <li><a [routerLink]="['/']"><i class="fa fa-plus"></i> Add Meetup</a></li>
+      <li><a [routerLink]="['/']"><i class="fa fa-question-circle"></i> About</a></li>
+      </ul>
+    </div>
+  </nav>
+</div>
+
+<div class="container">
+  <router-outlet></router-outlet>
+  <div class="fixed-action-btn">
+    <a [routerLink]="['/']" class="btn-floating btn-large red">
+      <i class="fa fa-plus"></i>
+    </a>
+  </div>
+</div>
