@@ -1,0 +1,34 @@
+<div *ngIf="meetup">
+<!--
+  <h2>{{ meetup.name | uppercase }} Details</h2>
+  <h2>{{ meetup.city }} city</h2>
+  <h2>{{ meetup.address}} address</h2> -->
+
+  <br />
+  <button (click)="goBack()" class="btn grey">Back</button>
+  <h1>{{meetup.name}}</h1>
+  <ul class="collection">
+   <li class="collection-item">City: {{meetup.city}}</li>
+   <li class="collection-item">Address: {{meetup.address}}</li>
+   </ul>
+   <!-- <button class="btn">Edit</button> -->
+   <!-- <a [routerLink]="['/edit-meetup/:id']" class="btn">Edit</a> -->
+
+  <!-- <button class="btn red right">Delete</button> -->
+  <button  class="btn red right" (click)="delete()">Delete</button>
+
+  <div><span>id: </span>{{meetup.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="meetup.name" placeholder="name"/>
+    </label>
+    <label>city:
+      <input [(ngModel)]="meetup.city" placeholder="city"/>
+    </label>
+    <label>address:
+      <input [(ngModel)]="meetup.address" placeholder="address"/>
+    </label>
+  </div>
+  <button (click)="save()">save</button>
+  <button (click)="goBack()" class="btn grey">go back</button>
+</div>

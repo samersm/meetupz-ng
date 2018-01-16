@@ -24,4 +24,19 @@ export class MeetupsComponent implements OnInit {
           .subscribe(meetups => this.meetups = meetups);
     }
 
+
+    add(name: string): void {
+      name = name.trim();
+      if (!name) { return; }
+      this.dataService.addMeetup({ name } as Meetup)
+        .subscribe(meetup => {
+          this.meetups.push(meetup);
+        });
+    }
+
+    delete(meetup: Meetup): void {
+      this.meetups = this.meetups.filter(h => h !== meetup);
+      this.dataService.deleteMeetup(meetup).subscribe();
+    }
+
 }

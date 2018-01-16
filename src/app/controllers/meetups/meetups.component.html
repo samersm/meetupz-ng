@@ -1,8 +1,24 @@
 <div>
+  <label>Meetup name:
+    <input #meetupName />
+  </label>
+  <label>Meetup city:
+    <input #meetupCity />
+  </label>
+  <label>Meetup address:
+    <input #meetupAddress />
+  </label>
+  <!-- (click) passes input value to add() and then clears the input -->
+  <button (click)="add(meetupName.value); meetupName.value=''">
+    add
+  </button>
+</div>
+
+<div>
   <h1>Meetups</h1>
   <ul class="collection">
     <li *ngFor="let meetup of meetups" class="collection-item">
-      <a routerLink="/">{{meetup.name}}</a>
+      <a routerLink="/detail/{{meetup.id}}">{{meetup.name}}</a>
       <!-- <div><span>id: </span>{{meetup.id}}</div> -->
     </li>
   </ul>

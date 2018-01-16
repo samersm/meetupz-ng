@@ -6,6 +6,10 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
 @Injectable()
 export class DataService {
   private baseUrl = 'api/meetups';  // URL to web api
@@ -29,6 +33,33 @@ export class DataService {
     return this.http.get<Meetup>(url).pipe(
       tap(_ => this.log(`fetched meetup id=${id}`)),
       catchError(this.handleError<Meetup>(`getMeetup id=${id}`))
+    );
+  }
+
+  /** POST: add a new meetup to the server */
+  addMeetup (meetup: Meetup): Observable<Meetup> {
+    return this.http.post<Meetup>(this.baseUrl, meetup, httpOptions).pipe(
+      tap((meetup: Meetup) => this.log(`added meetup w/ id=${meetup.id}`)),
+      catchError(this.handleError<Meetup>('addMeetup'))
+    );
+  }
+
+  /** PUT: update the meetup on the server */
+  updateMeetup (meetup: Meetup): Observable<any> {
+    return this.http.put(this.baseUrl, meetup, httpOptions).pipe(
+      tap(_ => this.log(`updated meetup id=${meetup.id}`)),
+      catchError(this.handleError<any>('updateMeetup'))
+    );
+  }
+
+  /** DELETE: delete the meetup from the server */
+  deleteMeetup (meetup: Meetup | number): Observable<Meetup> {
+    const id = typeof meetup === 'number' ? meetup : meetup.id;
+    const url = `${this.baseUrl}/${id}`;
+
+    return this.http.delete<Meetup>(url, httpOptions).pipe(
+      tap(_ => this.log(`deleted meetup id=${id}`)),
+      catchError(this.handleError<Meetup>('deleteMeetup'))
     );
   }
 

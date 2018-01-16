@@ -10,3 +10,6 @@ $ npm install angular-in-memory-web-api --save
 $ ng generate component controllers/messages
 $ ng generate service services/message --module=app
 commit..
+
+$ ng g component controllers/meetups/meetup-detail
+commit..
