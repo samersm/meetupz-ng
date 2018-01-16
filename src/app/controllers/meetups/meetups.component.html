@@ -1,3 +1,9 @@
-<p>
-  meetups works!
-</p>
+<div>
+  <h1>Meetups</h1>
+  <ul class="collection">
+    <li *ngFor="let meetup of meetups" class="collection-item">
+      <a routerLink="/">{{meetup.name}}</a>
+      <!-- <div><span>id: </span>{{meetup.id}}</div> -->
+    </li>
+  </ul>
+</div>

@@ -5,3 +5,8 @@ $ ng generate component controllers/meetups
 $ ng generate module config/app-routing --flat --module=app
 $ ng g service services/data --module=app
 commit..
+
+$ npm install angular-in-memory-web-api --save
+$ ng generate component controllers/messages
+$ ng generate service services/message --module=app
+commit..
