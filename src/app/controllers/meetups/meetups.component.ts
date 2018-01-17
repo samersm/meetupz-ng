@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
 import { Meetup } from '../../models/meetup';
 import { DataService } from '../../services/data.service';
 
@@ -12,8 +13,13 @@ export class MeetupsComponent implements OnInit {
 
 
     meetups: Meetup[];
+    @Input() meetup: Meetup;
 
-    constructor(private dataService: DataService) { }
+    constructor(
+      private route: ActivatedRoute,
+      private dataService: DataService,
+      private location: Location
+              ) { }
 
     ngOnInit() {
       this.getMeetups();
@@ -24,6 +30,18 @@ export class MeetupsComponent implements OnInit {
           .subscribe(meetups => this.meetups = meetups);
     }
 
+    onSubmit(): void {
+       this.dataService.addMeetup(this.meetup)
+         .subscribe();
+     }
+
+    // onSubmit(id: number): void {
+    //   this.dataService
+    //       .addMeetup(this.meetup as Meetup)
+    //       .subscribe(meetup => {
+    //         this.meetups.push(meetup);
+    //       });
+    // }
 
     add(name: string): void {
       name = name.trim();

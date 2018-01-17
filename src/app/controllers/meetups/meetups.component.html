@@ -15,7 +15,9 @@
    <br />
   <!-- <a [routerLink]="['/']" class="btn grey">Back</a> -->
   <h1>Add Meetup</h1>
-  <!-- <form onSubmit={this.onSubmit.bind(this)}> -->
+  <!-- <form (submit)="onSubmit()"> -->
+  <form (submit)="add(meetupName.value); meetupName.value=''">
+  <!-- <form ng-submit="addText(form)" (submit)="onSubmit()"> -->
      <div class="input-field">
        <input #meetupName type="text" name="name" ref="name" />
        <label for="name">Name</label>
@@ -28,26 +30,14 @@
        <input #meetupAddress type="text" name="address" ref="address" />
        <label for="address">Address</label>
      </div>
-     <!-- <input type="submit" value="Save" class="btn" /> -->
+     <!-- <div class="input-field">
+       <input #meetupId type="text" name="id" ref="id" />
+       <label for="Id">ID</label>
+     </div> -->
+     <input type="submit" value="Save" class="btn" />
      <!-- (click) passes input value to add() and then clears the input -->
-     <button (click)="add(meetupName.value); meetupName.value=''" class="btn">
+     <!-- <button (click)="add(meetupName.value); meetupName.value=''" class="btn">
        add
-     </button>
-   <!-- </form> -->
+     </button> -->
+   </form>
  </div>
-
-<!-- <div>
-  <label>Meetup name:
-    <input #meetupName />
-  </label>
-  <label>Meetup city:
-    <input #meetupCity />
-  </label>
-  <label>Meetup address:
-    <input #meetupAddress />
-  </label> -->
-  <!-- (click) passes input value to add() and then clears the input -->
-  <!-- <button (click)="add(meetupName.value); meetupName.value=''">
-    add
-  </button>
-</div> -->
