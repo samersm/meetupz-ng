@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Meetup } from '../../models/meetup';
@@ -13,7 +13,9 @@ export class MeetupsComponent implements OnInit {
 
 
     meetups: Meetup[];
+    // meetups: Meetup = new Meetup();
     @Input() meetup: Meetup;
+    // meetup = this.initMeetup();
 
     constructor(
       private route: ActivatedRoute,
@@ -30,12 +32,27 @@ export class MeetupsComponent implements OnInit {
           .subscribe(meetups => this.meetups = meetups);
     }
 
-    onSubmit(): void {
-       this.dataService.addMeetup(this.meetup)
+    onSubmit(meetup: Meetup): void {
+      // this.meetup = this.initMeetup();
+       this.dataService.addMeetup(this.meetup as Meetup)
          .subscribe();
      }
 
-    // onSubmit(id: number): void {
+    // onSubmit(): void {
+    //    this.dataService.addMeetup(this.meetup)
+    //      .subscribe();
+    //  }
+
+    // onSubmit(): void {
+    //    this.dataService.addMeetup()
+    //      .subscribe(meetup => {
+    //        this.meetups.push(meetup)
+    //      });
+    //  }
+
+    // onSubmit(newMeetup: string): void {
+    //   newMeetup = meetup.trim();
+    //   if (!newMeetup) { return; }
     //   this.dataService
     //       .addMeetup(this.meetup as Meetup)
     //       .subscribe(meetup => {
@@ -56,5 +73,14 @@ export class MeetupsComponent implements OnInit {
       this.meetups = this.meetups.filter(h => h !== meetup);
       this.dataService.deleteMeetup(meetup).subscribe();
     }
+
+    // initMeetup() {
+    //     return {
+    //         id: undefined,
+    //         name: '',
+    //         city:'',
+    //         address:''
+    //     }
+    // }
 
 }

@@ -15,10 +15,11 @@
    <br />
   <!-- <a [routerLink]="['/']" class="btn grey">Back</a> -->
   <h1>Add Meetup</h1>
-  <!-- <form (submit)="onSubmit()"> -->
-  <form (submit)="add(meetupName.value); meetupName.value=''">
+  <form (submit)="onSubmit()">
+  <!-- <form (ngSubmit)="add(meetupName.value); meetupName.value=''"> -->
   <!-- <form ng-submit="addText(form)" (submit)="onSubmit()"> -->
      <div class="input-field">
+       <!-- <input #meetupName='ngModel' [(ngModel)]="meetup.name" type="text" name="name" ref="name" /> -->
        <input #meetupName type="text" name="name" ref="name" />
        <label for="name">Name</label>
      </div>
