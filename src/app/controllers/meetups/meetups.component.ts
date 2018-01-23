@@ -10,12 +10,13 @@ import { DataService } from '../../services/data.service';
   styleUrls: ['./meetups.component.css']
 })
 export class MeetupsComponent implements OnInit {
-
-
     meetups: Meetup[];
-    // meetups: Meetup = new Meetup();
-    @Input() meetup: Meetup;
-    // meetup = this.initMeetup();
+    meetup = {
+      name:'',
+      city:'',
+      address:'',
+      id: undefined
+  }
 
     constructor(
       private route: ActivatedRoute,
@@ -32,55 +33,18 @@ export class MeetupsComponent implements OnInit {
           .subscribe(meetups => this.meetups = meetups);
     }
 
-    onSubmit(meetup: Meetup): void {
-      // this.meetup = this.initMeetup();
-       this.dataService.addMeetup(this.meetup as Meetup)
-         .subscribe();
-     }
 
-    // onSubmit(): void {
-    //    this.dataService.addMeetup(this.meetup)
-    //      .subscribe();
-    //  }
-
-    // onSubmit(): void {
-    //    this.dataService.addMeetup()
-    //      .subscribe(meetup => {
-    //        this.meetups.push(meetup)
-    //      });
-    //  }
-
-    // onSubmit(newMeetup: string): void {
-    //   newMeetup = meetup.trim();
-    //   if (!newMeetup) { return; }
-    //   this.dataService
-    //       .addMeetup(this.meetup as Meetup)
-    //       .subscribe(meetup => {
-    //         this.meetups.push(meetup);
-    //       });
-    // }
-
-    add(name: string): void {
-      name = name.trim();
-      if (!name) { return; }
-      this.dataService.addMeetup({ name } as Meetup)
-        .subscribe(meetup => {
+    onSubmit(): void {
+       this.dataService.addMeetup(this.meetup)
+         .subscribe(meetup => {
+          console.log(meetup);
           this.meetups.push(meetup);
-        });
-    }
+      });
+     }
 
     delete(meetup: Meetup): void {
       this.meetups = this.meetups.filter(h => h !== meetup);
       this.dataService.deleteMeetup(meetup).subscribe();
     }
-
-    // initMeetup() {
-    //     return {
-    //         id: undefined,
-    //         name: '',
-    //         city:'',
-    //         address:''
-    //     }
-    // }
 
 }
