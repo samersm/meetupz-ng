@@ -6,17 +6,18 @@
    <li class="collection-item">City: {{meetup.city}}</li>
    <li class="collection-item">Address: {{meetup.address}}</li>
    </ul>
-   <!-- <button class="btn">Edit</button> -->
+   <button (click)="onEdit()" class="btn">Edit</button>
    <!-- <a [routerLink]="['/edit-meetup/:id']" class="btn">Edit</a> -->
-   <a routerLink="/" class="btn">Edit</a>
+   <!-- <a routerLink="/" class="btn">Edit</a> -->
 
   <!-- <button class="btn red right">Delete</button> -->
   <button  class="btn red right" (click)="delete()">Delete</button>
   <br />
   <br />
-  <hr />
 
-  <div>
+
+  <div *ngIf="isEdit">
+     <hr />
      <br />
     <!-- <a [routerLink]="['/']" class="btn grey">Back</a> -->
     <h1>Edit Meetup</h1>

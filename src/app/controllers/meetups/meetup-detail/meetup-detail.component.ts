@@ -13,6 +13,7 @@ import { DataService }  from '../../../services/data.service';
 })
 export class MeetupDetailComponent implements OnInit {
   @Input() meetup: Meetup;
+  isEdit:boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -42,5 +43,9 @@ export class MeetupDetailComponent implements OnInit {
    delete(): void {
     //  this.meetups = this.meetups.filter(h => h !== meetup);
      this.dataService.deleteMeetup(this.meetup).subscribe(() => this.goBack());
+   }
+
+   onEdit() {
+     this.isEdit = !this.isEdit;
    }
 }

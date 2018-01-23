@@ -16,7 +16,8 @@ export class MeetupsComponent implements OnInit {
       city:'',
       address:'',
       id: undefined
-  }
+    }
+    value:boolean = false;
 
     constructor(
       private route: ActivatedRoute,
@@ -45,6 +46,10 @@ export class MeetupsComponent implements OnInit {
     delete(meetup: Meetup): void {
       this.meetups = this.meetups.filter(h => h !== meetup);
       this.dataService.deleteMeetup(meetup).subscribe();
+    }
+
+    onAdd() {
+      this.value = !this.value
     }
 
 }
